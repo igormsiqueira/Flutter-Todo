@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo/database/todo_item.dart';
 
@@ -144,7 +145,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void initState() {
     refresh();
+    setupOrientationPriority();
     super.initState();
+  }
+
+  void setupOrientationPriority() {
+       SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   void refresh() async {
